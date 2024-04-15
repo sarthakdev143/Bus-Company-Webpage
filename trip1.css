@@ -1,0 +1,298 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    --NavbarHeight: 5rem;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(to right, #6b5b95, #9f86c0);
+    /* Gradient background for the header */
+    width: 100%;
+    height: var(--NavbarHeight);
+}
+
+nav {
+    width: 100%;
+    height: var(--NavbarHeight);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 70%;
+        height: var(--NavbarHeight);
+        list-style: none;
+
+        .right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            position: relative;
+
+            a,
+            p {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+                gap: 0.5rem;
+                padding: 0.4rem;
+                border-radius: 0.5rem;
+                cursor: pointer;
+                position: relative;
+                color: #fff;
+                /* Set the text color to white for better visibility */
+
+                &:active {
+                    opacity: 0.5;
+                    color: #fff;
+                }
+
+                .dropdown {
+                    transform: translateY(0.25rem);
+                    font-size: 1rem;
+                }
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.2);
+                    /* Add a subtle hover effect */
+                }
+            }
+
+            .account-menu {
+                visibility: hidden;
+                width: auto;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                background: #fff;
+                border-radius: 1rem;
+                box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+                padding: 0.4rem 0;
+                position: absolute;
+                right: -12%;
+                top: 100%;
+
+                .partition {
+                    border-top: 0.1rem solid rgb(206, 206, 206);
+                    margin-top: 0.4rem;
+                    margin-bottom: 0.4rem;
+                }
+
+                span {
+                    width: 100%;
+                    height: 3rem;
+                    display: flex;
+                    align-items: center;
+                    padding: 0 1.2rem;
+                    letter-spacing: 0.05rem;
+
+                    &:hover {
+                        background: rgb(240, 240, 240);
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.bus-route {
+    width: 100%;
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    border-bottom: 0.1rem solid rgb(192, 192, 192);
+    border-top: 0.1rem solid rgb(192, 192, 192);
+    gap: 1.5rem;
+    padding-left: 3rem;
+    background: #fff;
+    box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.1);
+    /* Add a subtle box-shadow */
+
+    .city-div {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .icon {
+            transform: translateY(0.15rem);
+        }
+    }
+
+    .date-div {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .icon {
+        font-size: 1rem;
+    }
+
+    .modify {
+        padding: 0.5rem 1.5rem;
+        background: rgb(236, 236, 236);
+        border: 0.1rem solid;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        /* Add a smooth transition effect */
+
+        &:hover {
+            font-weight: 600;
+            background: rgb(218, 218, 218);
+        }
+    }
+}
+
+main {
+    padding: 2rem;
+    width: 100%;
+    height: calc(100% - var(--NavbarHeight));
+    background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
+    /* Gradient background for the main content */
+}
+
+.container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    background-color: #fff;
+    /* Add a white background to the container */
+    border-radius: 1rem;
+    /* Add rounded corners to the container */
+    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.1);
+    /* Add a subtle box-shadow */
+
+    h2 {
+        text-align: center;
+        margin-bottom: 3rem;
+        color: #333;
+        font-weight: 700;
+        font-size: 2.5rem;
+    }
+
+    /* Bus Item Styles */
+    .bus-list {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 3rem;
+
+        .bus-item {
+            background-color: #fff;
+            border: 0.1rem solid #e0e0e0;
+            border-radius: 0.8rem;
+            box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            /* Add this to prevent content from overflowing */
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(45deg, #ff6b6b, #ffa500);
+                /* Gradient background for the bus item */
+                opacity: 0.1;
+                z-index: -1;
+            }
+
+            .bus-info {
+                h3 {
+                    margin-top: 0;
+                    color: #333;
+                    font-size: 2rem;
+                    font-weight: 600;
+                }
+
+                p {
+                    color: #666;
+                    font-size: 1.4rem;
+                    margin-bottom: 1.5rem;
+                }
+
+                .bus-details {
+                    display: flex;
+                    flex-wrap: wrap;
+                    margin-top: 1.5rem;
+
+                    .detail {
+                        display: flex;
+                        align-items: center;
+                        margin-right: 2rem;
+                        color: #666;
+                        font-size: 1.4rem;
+
+                        i {
+                            margin-right: 0.5rem;
+                            color: #9e9e9e;
+                        }
+                    }
+                }
+
+                .deal {
+                    margin-top: 1.5rem;
+                    color: #4CAF50;
+                    font-size: 1.4rem;
+                }
+            }
+
+            .bus-actions {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+
+                .fare {
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                    color: #333;
+                    font-size: 1.8rem;
+                }
+
+                .seats {
+                    color: #666;
+                    font-size: 1.4rem;
+                    margin-bottom: 1.5rem;
+                }
+
+                .view-seats {
+                    background-color: #e53935;
+                    color: white;
+                    border: none;
+                    padding: 1.2rem 2.4rem;
+                    border-radius: 0.5rem;
+                    cursor: pointer;
+                    font-size: 1.4rem;
+                    font-weight: 600;
+                    transition: background-color 0.3s ease;
+
+                    &:hover {
+                        background-color: #c62828;
+                    }
+                }
+            }
+        }
+    }
+}
